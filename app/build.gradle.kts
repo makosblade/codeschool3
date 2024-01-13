@@ -20,8 +20,10 @@ repositories {
 }
 
 dependencies {
-    // This dependency is used by the application.
-    implementation(libs.guava)
+    implementation(platform("com.fasterxml.jackson:jackson-bom:2.16.1"))
+    implementation("com.fasterxml.jackson.core:jackson-databind")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jdk8")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 }
 
 testing {
@@ -39,6 +41,10 @@ java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(21))
     }
+}
+
+tasks.named<JavaExec>("run") {
+    standardInput = System.`in`
 }
 
 application {

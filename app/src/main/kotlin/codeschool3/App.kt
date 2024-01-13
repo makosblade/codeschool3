@@ -3,13 +3,22 @@
  */
 package codeschool3
 
-class App {
-    val greeting: String
-        get() {
-            return "Hello World!"
-        }
-}
+class App
 
 fun main() {
-    println(App().greeting)
+//    val runner = DrewWordleRunner()
+    val runner = KatherineWordleRunner()
+
+    val words = loadFromJson()
+    runner.playGame(words)//allPossibleWords, invalidWords)
+
+    while (runner.playAgain()) {
+        runner.playGame(words)
+    }
+}
+
+class DrewWordleRunner() : WordleRunner {
+    override fun playGame(words: WordleWords) {
+        TODO("Not yet implemented")
+    }
 }
